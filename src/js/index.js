@@ -128,6 +128,16 @@ class Stage {
     this.render();
     return this.element;
   }
+
+  collisionDetection(x, y) {
+    this.entities.forEach((entity) => {
+      if (entity.x === x && entity.y === y) {
+        return entity.type;
+      } else {
+        return null;
+      }
+    });
+  }
 }
 
 class Entity {
@@ -155,7 +165,9 @@ class Entity {
 
   mount() {
     this.render();
-    stage.entities.push(this.type);
+    stage.entities.push(
+      (this.type = { x: this.xCor, y: this.yCor, type: this.type })
+    );
     return this.element;
   }
 }
