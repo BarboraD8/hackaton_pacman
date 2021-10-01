@@ -23,6 +23,44 @@ document.addEventListener('keydown', (event) => {
 
 
 class Pacman {
-    constructor() {}
+    constructor() {
+        this.mouth = true;
+        this.xposition = 0;
+    }
+
+    render(){
+        this.element = document.createElement("div")
+        this.element.className = "entity entity--pac pacboy-active-light"
+        this.pac = this.element.querySelector("entity--pac")
+    }
+
+    mount(){
+        this.render();
+        this.moveRight();
+        return this.element;
+    }
+
+    update(){
+   
+    }
+
+    moveRight() {
+        document.addEventListener('keydown', (event) => {
+        if (event.code === 'ArrowRight') {
+        this.xposition += 85;
+        this.pac.style.left = `${this.xposition}px`;
+        mouseopen = !mouseopen;
+
+        if (mouth === true) {
+            pacBoy.style.backgroundPositionX = 'right';
+        } else {
+            pacBoy.style.backgroundPositionX = 'left';
+        }})
+        
+    }
+    }
 }
 
+
+const pacc = new Pacman
+document.querySelector("#app").appendChild(pacc.mount())
